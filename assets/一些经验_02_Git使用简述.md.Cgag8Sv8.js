@@ -1,0 +1,28 @@
+import{_ as a,c as s,o as n,a2 as e}from"./chunks/framework.DfWqqJOM.js";const b=JSON.parse('{"title":"Git使用简述","description":"","frontmatter":{},"headers":[],"relativePath":"一些经验/02_Git使用简述.md","filePath":"一些经验/02_Git使用简述.md"}'),t={name:"一些经验/02_Git使用简述.md"},i=e(`<h1 id="git使用简述" tabindex="-1">Git使用简述 <a class="header-anchor" href="#git使用简述" aria-label="Permalink to &quot;Git使用简述&quot;">​</a></h1><h2 id="_1-提交代码" tabindex="-1">1.提交代码 <a class="header-anchor" href="#_1-提交代码" aria-label="Permalink to &quot;1.提交代码&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git init</span></span>
+<span class="line"><span>git add .</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>//添加远程仓库地址</span></span>
+<span class="line"><span>git commit -m &quot;提交是由&quot;</span></span>
+<span class="line"><span>git remote add origin https://github.com/用户名/仓库名.git</span></span>
+<span class="line"><span>//需要设置远程的分支</span></span>
+<span class="line"><span>git branch --set-upstream-to=origin/master</span></span>
+<span class="line"><span>//再进行push到远程仓库</span></span>
+<span class="line"><span>git push -u origin master</span></span></code></pre></div><h2 id="_2-从master拉取新分支" tabindex="-1">2.从master拉取新分支 <a class="header-anchor" href="#_2-从master拉取新分支" aria-label="Permalink to &quot;2.从master拉取新分支&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git checkout master 　 #切换到master分支</span></span>
+<span class="line"><span>git pull 　 　 　 　 　 #更新到最新代码</span></span>
+<span class="line"><span>git checkout -b dev 　#创建新分支并切换到该分支</span></span>
+<span class="line"><span>git push origin dev 　 #推送新分支到远程仓库</span></span>
+<span class="line"><span>git branch --set-upstream-to=origin/dev 　 #关联远程仓库</span></span>
+<span class="line"><span>git pull 　 　 　 　 　 #尝试拉取验证</span></span></code></pre></div><h2 id="_3-合并分支" tabindex="-1">3.合并分支 <a class="header-anchor" href="#_3-合并分支" aria-label="Permalink to &quot;3.合并分支&quot;">​</a></h2><p>想将dev分支合并到master分支：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>//首先切换到master分支</span></span>
+<span class="line"><span>git checkout master</span></span>
+<span class="line"><span>//更新远程master分支代码</span></span>
+<span class="line"><span>git pull origin master</span></span>
+<span class="line"><span>//把dev分支的代码合并到master上</span></span>
+<span class="line"><span>git merge dev</span></span>
+<span class="line"><span>//push到远程master上</span></span>
+<span class="line"><span>git push origin master</span></span></code></pre></div><h2 id="_4-删除分支" tabindex="-1">4.删除分支 <a class="header-anchor" href="#_4-删除分支" aria-label="Permalink to &quot;4.删除分支&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>//删除本地分支</span></span>
+<span class="line"><span>git branch -d [branchname]</span></span>
+<span class="line"><span>//删除远程分支</span></span>
+<span class="line"><span>git push origin --delete [branchname]</span></span></code></pre></div><h2 id="其他问题" tabindex="-1">其他问题 <a class="header-anchor" href="#其他问题" aria-label="Permalink to &quot;其他问题&quot;">​</a></h2><h3 id="_1-windows下解决git报错-lf-will-be-replaced-by-crlf-the-next-time-git-touches-it" tabindex="-1">1.windows下解决Git报错： LF will be replaced by CRLF the next time Git touches it <a class="header-anchor" href="#_1-windows下解决git报错-lf-will-be-replaced-by-crlf-the-next-time-git-touches-it" aria-label="Permalink to &quot;1.windows下解决Git报错： LF will be replaced by CRLF the next time Git touches it&quot;">​</a></h3><p>原因：</p><blockquote><p>Uinx/Linux采用换行符LF表示下一行（LF：LineFeed，中文意思是换行），即：\\n；</p><p>Dos和Windows采用回车+换行CRLF表示下一行（CRLF：CarriageReturn LineFeed，中文意思是回车换行），即：\\r\\n；</p><p>Mac OS采用回车CR表示下一行（CR：CarriageReturn，中文意思是回车），即：\\r。</p></blockquote><p>解决方案：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git config --global core.autocrlf true，适用于Windows系统，且一般为Windows默认设置。</span></span>
+<span class="line"><span>git config --global core.autocrlf input，适用于Linux系统</span></span>
+<span class="line"><span>git config --global core.autocrlf false，适用于Windows系统，且只在Windows上开发的情况。（ 嫌警告烦可以设置此选项 ）</span></span></code></pre></div><h3 id="_2-报错-更新被拒绝-因为您当前分支的最新提交落后于其对应的远程分支" tabindex="-1">2.报错：更新被拒绝，因为您当前分支的最新提交落后于其对应的远程分支 <a class="header-anchor" href="#_2-报错-更新被拒绝-因为您当前分支的最新提交落后于其对应的远程分支" aria-label="Permalink to &quot;2.报错：更新被拒绝，因为您当前分支的最新提交落后于其对应的远程分支&quot;">​</a></h3><p>进行分支合并：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki shiki-themes github-light github-dark vp-code" tabindex="0"><code><span class="line"><span>git fetch origin</span></span>
+<span class="line"><span>git merge origin/master</span></span></code></pre></div>`,19),p=[i];function l(c,o,r,d,h,g){return n(),s("div",null,p)}const m=a(t,[["render",l]]);export{b as __pageData,m as default};

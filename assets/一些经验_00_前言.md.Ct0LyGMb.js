@@ -1,1 +1,0 @@
-import{_ as e,c as t,o as a}from"./chunks/framework.BGHot3Wn.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"一些经验/00_前言.md","filePath":"一些经验/00_前言.md"}'),r={name:"一些经验/00_前言.md"};function _(o,s,c,n,p,d){return a(),t("div")}const f=e(r,[["render",_]]);export{m as __pageData,f as default};
